@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+	<form method="post">
+		{% csrf_token %}
+		{% for i in login_form %}
+			<p>
+				{{i.label_tag}}
+				{{i}}
+
+				{% if i.help_text %}
+					<small style="color: gray">{{i.help_text}}</small>
+				{% endif %}
+
+				{% for error in i.errors %}
+					<small style="color: gray">{{i.error}}</small>
+				{% endfor %}
+		{% endfor %}
+				{% if login_form.non_field_errors %}
+					<div>
+						<h3>{{login_form.non_field_errors}}</h3>
+					</div>
+				{% endif %}
+			</p>
+		
+		<button type="submit">Register</button>
+	</form>
+</body>
+</html>

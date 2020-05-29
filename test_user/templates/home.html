@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	{% if request.user.is_authenticated %}
+
+	<h1>Hello,{{request.user.username}}</h1>
+	<h1>{{request.user.semester}}</h1>
+	<a href="logout_view">Logout</a>
+	{% if request.user.semester == '3' %}
+
+		<h1>yes</h1>
+		<a href="notice">see notification</a>
+
+	{% endif %}
+	{% else %}
+	<br><a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=987654321&scope=r_emailaddress%20r_liteprofile&client_id=86n778segshrmo&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Fauth">Login with LinkedIn</a><br>
+	<a href="login_view">Login</a>
+	{% endif %}
+</body>
+</html>

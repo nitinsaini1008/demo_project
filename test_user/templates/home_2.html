@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	{% if request.user.is_authenticated %}
+
+	<h1>Hello,{{request.user.username}}</h1>
+	<h1>{{request.user.semester}}</h1>
+	<a href="logout_view">Logout</a>
+	{% if request.user.semester == '3' %}
+
+		<h1>yes</h1>
+		{% for i in d %}
+			{{i.subject}}
+			{{i.message}}
+		{% endfor %}
+
+	{% endif %}
+	{% endif %}
+</body>
+</html>
